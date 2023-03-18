@@ -73,3 +73,7 @@ model.display()
 #     c.setFill("blue")
 #     c.draw(win) 
 # win.getMouse()
+# model.display()
+# model.pprint()
+
+win = GraphWin()
