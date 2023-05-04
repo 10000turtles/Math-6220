@@ -10,7 +10,7 @@ import os
 from pyomo.environ import *
 from graphics import *
 
-squares = 2
+squares = 1
 
 is_feasible = False
 
@@ -120,7 +120,8 @@ while (not is_feasible):
                         model.add_component(f"int_point_s{i}_c{k}_{j}_{q}_y_valid_geq", Constraint(
                             expr=model.component(f"int_point_s{i}_c{k}_{j}_{q}_y") + Tol >= m_1*(b_1 - b_2)/(m_2 - m_1) + b_1))
 
-    model.objective = Objective(expr=model.xyBound, sense=minimize)
+    model.objective = Objective(expr=model.xyBound + model.component(
+        f"c{0}_{0}_y") - model.component(f"c{2}_{0}_y"), sense=minimize)
     model.display()
 
     with open('test.txt', 'w') as sys.stdout:
