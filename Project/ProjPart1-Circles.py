@@ -26,6 +26,7 @@ import random
 from pyomo.environ import *
 from graphics import *
 
+
 circRad = 1
 circles = 20
 
